@@ -44,11 +44,13 @@ export const todoSlice = createSlice({
         .addCase(getMultiItems.pending, (state) => {
             state.loadingItem = true;
             state.successCreate = false
+            state.successDelete = false
         })
         .addCase(getMultiItems.fulfilled, (state, action) => {
             state.loadingItem = false
             state.items = action.payload
             state.successCreate = false
+            state.successDelete = false
         })
         .addCase(getMultiItems.rejected, (state) => {
             state.loadingItem = false;

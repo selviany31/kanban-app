@@ -3,14 +3,17 @@ import "./Task.css"
 import SVG from "react-inlinesvg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getMultiItems } from "../../store/actions/todos";
 import { Draggable } from "react-beautiful-dnd";
+import DeleteComponent from "./Delete";
 
 const TaskComponent = ({ id }) => {
     const dispatch = useDispatch()
     const { items, todos } = useSelector((state) => state.todos)
     const filterItem = items?.filter(item => item?.todo_id === id)
+
+    const [showDelete, setShowDelete] = useState(false)
 
     useEffect(() => {
         dispatch(getMultiItems(todos))
@@ -65,12 +68,20 @@ const TaskComponent = ({ id }) => {
                                                 </div>
                                                 <span className="item-title">Edit</span>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-1" className="d-flex align-items-center px-0 item-title">
+                                            <Dropdown.Item onClick={() => setShowDelete(true)} className="d-flex align-items-center px-0 item-title">
                                                 <div style={{ width: "35px" }}>
                                                     <SVG  src="icon/trash.svg" />
                                                 </div>
                                                 <span className="item-title">Delete</span>
                                             </Dropdown.Item>
+                                                {showDelete && 
+                                                    <DeleteComponent 
+                                                        show={showDelete} 
+                                                        close={() => setShowDelete(false)}
+                                                        id={id}
+                                                        idItem={item?.id} 
+                                                    /> 
+                                                }
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </div>

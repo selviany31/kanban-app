@@ -57,3 +57,7 @@
     fill: #01959F;
     stroke: #01959F;
 }
+
+.modal-custom .modal-content {
+    width: 420px !important;
+}
