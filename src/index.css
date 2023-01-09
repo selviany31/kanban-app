@@ -40,3 +40,14 @@ code {
   border-radius: 8px !important;
   padding: 4px 16px !important;
 }
+
+.separator {
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #eff2f5;
+}
+
+.separator.separator-dashed {
+  border-bottom-style: dashed;
+  border-bottom-color: #e4e6ef;
+}

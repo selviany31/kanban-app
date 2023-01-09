@@ -1,0 +1,27 @@
+.task {
+    background: #FAFAFA;
+}
+
+.task p {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.task .progress-bar-custom p {
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height, or 133% */
+
+
+    /* Neutral/70 */
+
+    color: #757575;
+}
+
+.task .progress {
+    --bs-progress-bar-bg: #01959F;
+}
+
+.task .progress-done .progress {
+    --bs-progress-bar-bg: #43936C;
+}
