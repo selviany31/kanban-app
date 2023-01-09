@@ -64,11 +64,13 @@ const TaskComponent = ({ id }) => {
                             <Card.Body>
                                 <p className="fw-bold mb-0">{item?.name}</p>
                                 <div className="separator separator-dashed mt-2 mb-2"></div>
-                                <div className="d-flex justify-content-between align-items-center progress-bar-custom progress-done">
+                                <div 
+                                    className={`d-flex justify-content-between align-items-center progress-bar-custom ${item?.progress_percentage === 100 ? "progress-done" : ""}`}
+                                >
                                     <ProgressBar now={item?.progress_percentage} 
                                         style={{ height: "12px", width: "60%" }}
                                     />
-                                    <p className="mb-0">{item?.progress_percentage}%</p>
+                                    {item?.progress_percentage === 100 ? <Image src="icon/checklist.svg" /> : <p className="mb-0">{item?.progress_percentage}%</p>}
                                     <Dropdown className="dropdown-custom">
                                         <Dropdown.Toggle
                                             className="bg-white border-0 p-0 m-0 d-flex justify-content-end"
