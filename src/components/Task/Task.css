@@ -10,11 +10,6 @@
 .task .progress-bar-custom p {
     font-size: 12px;
     line-height: 16px;
-    /* identical to box height, or 133% */
-
-
-    /* Neutral/70 */
-
     color: #757575;
 }
 
@@ -24,4 +19,40 @@
 
 .task .progress-done .progress {
     --bs-progress-bar-bg: #43936C;
+}
+
+.dropdown-custom .dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-custom .menu {
+    padding: 8px 0px;
+    width: 320px;
+    height: 160px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    padding: 20px 0px;
+}
+
+.dropdown-custom .menu .dropdown-item {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+}
+
+.dropdown-custom .menu .dropdown-item:hover {
+    background: none;
+}
+
+.dropdown-custom .menu .item-title:hover>span {
+    color: #01959F !important;
+}
+
+.dropdown-custom .menu .item-title:hover>div>svg>path {
+    fill: #01959F;
+    stroke: #01959F;
 }
