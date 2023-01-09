@@ -19,6 +19,22 @@ export const getDataTodos = createAsyncThunk(
     }
 )
 
+export const createDataTodos = createAsyncThunk(
+    "todo/createTodos",
+    async (data, { rejectWithValue }) => {
+        try {
+            const response = await axios.post(`https://todo-api-18-140-52-65.rakamin.com/todos`, data, {
+                headers: {
+                    'Authorization': `Basic ${token}`
+                }
+            })
+            return response.data
+        } catch (err) {
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 export const getMultiItems = createAsyncThunk(
     "todo/multiTodo",
     async (items, { rejectWithValue }) => {
