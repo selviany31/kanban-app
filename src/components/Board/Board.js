@@ -10,9 +10,9 @@ const BoardComponent = ({ id, title, desc, bgColor, brdColor, txtColor }) => {
 
     return (
         <Card 
-            className="card-custom"
+            className="card-custom mx-2"
             style={{ 
-                width: '326px', 
+                minWidth: '326px', 
                 border: `1px solid ${brdColor}`, 
                 background: bgColor, 
             }}

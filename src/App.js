@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import BoardComponent from "./components/Board/Board";
@@ -56,30 +56,30 @@ function App() {
       dispatch(getMultiItems(todos))
     }
   },[dispatch, todos, successCreate])
-  
+  console.log(1%bgColor.length);
   return (
     <div className="App">
       <Header />
       <Container className="mt-4" fluid>
-        <Row>
+        <div className="d-flex">
           <DragDropContext
             onDragEnd={result => onDragEnd(result, columns, setColumns, items)}
           >
             {todos?.map((todo, index) => (
-              <Col lg={3}>
+              <div>
                 <BoardComponent 
                   key={index} 
                   id={todo?.id}
                   title={todo?.title} 
                   desc={todo?.description} 
-                  bgColor={bgColor[index]}
-                  brdColor={brdColor[index]}
-                  txtColor={txtColor[index]}
+                  bgColor={bgColor[index%bgColor.length]}
+                  brdColor={brdColor[index%brdColor.length]}
+                  txtColor={txtColor[index%txtColor.length]}
                 />
-              </Col>
+              </div>
             ))}
           </DragDropContext>
-        </Row>
+        </div>
       </Container>
     </div>
   );
