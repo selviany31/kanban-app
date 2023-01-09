@@ -6,7 +6,7 @@ const TaskComponent = () => {
         <Card className="task">
             <Card.Body>
                 <p className="fw-bold mb-0">Re-designed the zero-g doggie bags. No more spills!</p>
-                <div className="separator separator-dashed mt-2 mb-3"></div>
+                <div className="separator separator-dashed mt-2 mb-2"></div>
                 <div className="d-flex justify-content-between align-items-center progress-bar-custom progress-done">
                     <ProgressBar now={60} 
                         style={{ height: "12px", width: "60%" }}

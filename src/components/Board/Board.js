@@ -23,9 +23,9 @@ const BoardComponent = () => {
                     Card Title
                 </Card.Title>
                 <Card.Text>
-                    <p className="subtitle fw-bold">January - March</p>
+                    <p className="subtitle fw-bold mb-2">January - March</p>
                     <TaskComponent />
-                    <Button className="bg-transparent border-0 d-flex align-items-center ps-0">
+                    <Button className="bg-transparent border-0 d-flex align-items-center p-0 mt-2">
                         <Image src="icon/add.svg" />
                         <span className="text-black subtitle ms-2">New Task</span>
                     </Button>
