@@ -48,7 +48,7 @@ const BoardComponent = ({ id, title, desc, bgColor, brdColor, txtColor }) => {
                         <Image src="icon/add.svg" />
                         <span className="text-black subtitle ms-2">New Task</span>
                     </Button>
-                    {show && <FormTask show={show} close={() => setShow(false)} title={"Create"} />}
+                    {show && <FormTask show={show} close={() => setShow(false)} title={"Create"} id={id} />}
                 </Card.Text>
             </Card.Body>
         </Card>

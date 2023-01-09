@@ -84,7 +84,14 @@ const TaskComponent = ({ id }) => {
                                                         idItem={item?.id} 
                                                     /> 
                                                 }
-                                                {showEdit && <FormTask show={showEdit} close={() => setShowEdit(false)} title={"Edit"} />}
+                                                {showEdit && 
+                                                    <FormTask show={showEdit} 
+                                                        close={() => setShowEdit(false)} 
+                                                        title={"Edit"} 
+                                                        name={item?.name}
+                                                        progress_percentage={item?.progress_percentage}
+                                                    />
+                                                }
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </div>
