@@ -1,0 +1,12 @@
+.card-custom .title {
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 2px 8px;
+    width: fit-content;
+}
+
+.card-custom .subtitle {
+    font-size: 12px;
+    line-height: 20px;
+}
