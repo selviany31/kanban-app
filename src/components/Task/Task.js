@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getMultiItems } from "../../store/actions/todos";
 import { Draggable } from "react-beautiful-dnd";
 import DeleteComponent from "./Delete";
+import FormTask from "./FormTask";
 
 const TaskComponent = ({ id }) => {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const TaskComponent = ({ id }) => {
     const filterItem = items?.filter(item => item?.todo_id === id)
 
     const [showDelete, setShowDelete] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
 
     useEffect(() => {
         dispatch(getMultiItems(todos))
@@ -62,7 +64,7 @@ const TaskComponent = ({ id }) => {
                                                 </div>
                                                 <span className="item-title">Move Left</span>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-1" className="d-flex align-items-center px-0 item-title">
+                                            <Dropdown.Item onClick={() => setShowEdit(true)} className="d-flex align-items-center px-0 item-title">
                                                 <div style={{ width: "35px" }}>
                                                     <SVG src="icon/edit.svg" />
                                                 </div>
@@ -82,6 +84,7 @@ const TaskComponent = ({ id }) => {
                                                         idItem={item?.id} 
                                                     /> 
                                                 }
+                                                {showEdit && <FormTask show={showEdit} close={() => setShowEdit(false)} title={"Edit"} />}
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </div>
