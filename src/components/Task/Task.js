@@ -88,6 +88,8 @@ const TaskComponent = ({ id }) => {
                                                     <FormTask show={showEdit} 
                                                         close={() => setShowEdit(false)} 
                                                         title={"Edit"} 
+                                                        id={id}
+                                                        idItem={item?.id}
                                                         name={item?.name}
                                                         progress_percentage={item?.progress_percentage}
                                                     />

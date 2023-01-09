@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createDataItems, deleteDataItems, getDataTodos, getMultiItems } from "../actions/todos";
+import { createDataItems, deleteDataItems, getDataTodos, getMultiItems, updateDataItems } from "../actions/todos";
 
 const initialState = {
     todos: [],
@@ -65,6 +65,18 @@ export const todoSlice = createSlice({
             state.successCreate = true;
         })
         .addCase(createDataItems.rejected, (state, action) => {
+            state.loadingCreate = false;
+            state.successCreate = false;
+        })
+        .addCase(updateDataItems.pending, (state) => {
+            state.loadingCreate = true;
+            state.successCreate = false;
+        })
+        .addCase(updateDataItems.fulfilled, (state, action) => {
+            state.loadingCreate = false;
+            state.successCreate = true;
+        })
+        .addCase(updateDataItems.rejected, (state, action) => {
             state.loadingCreate = false;
             state.successCreate = false;
         })

@@ -3,16 +3,27 @@ import { Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { createDataItems, getMultiItems } from "../../store/actions/todos";
+import { createDataItems, getMultiItems, updateDataItems } from "../../store/actions/todos";
 
-const FormTask = ({ show, close, title, id, name, progress_percentage }) => {
+const FormTask = ({ show, close, title, id, idItem, name, progress_percentage }) => {
     const dispatch = useDispatch()
     const { successCreate, loadingCreate, todos } = useSelector((state) => state.todos)
 
     const { register, reset, handleSubmit } = useForm()
 
     const onSubmit = (data) => {
-        dispatch(createDataItems({ id, data }))
+        if(title === 'Create') {
+            dispatch(createDataItems({ id, data }))
+        } else {
+            dispatch(updateDataItems({ 
+                id, 
+                idItem, 
+                data : {
+                    ...data,
+                    target_todo_id: id
+                }
+            }))
+        }
     }
 
     useEffect(() => {

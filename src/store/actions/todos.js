@@ -56,6 +56,22 @@ export const createDataItems = createAsyncThunk(
     }
 )
 
+export const updateDataItems = createAsyncThunk(
+    "todo/updateItems",
+    async ({ id, idItem, data }, { rejectWithValue }) => {
+        try {
+            const response = await axios.patch(`https://todo-api-18-140-52-65.rakamin.com/todos/${id}/items/${idItem}`, data, {
+                headers: {
+                    'Authorization': `Basic ${token}`
+                }
+            })
+            return response.data
+        } catch (err) {
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 export const deleteDataItems = createAsyncThunk(
     "todo/deleteItems",
     async ({ id, idItem }, { rejectWithValue }) => {
