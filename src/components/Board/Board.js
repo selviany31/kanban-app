@@ -12,7 +12,7 @@ const BoardComponent = ({ id, title, desc, bgColor, brdColor, txtColor }) => {
         <Card 
             className="card-custom"
             style={{ 
-                maxWidth: '18rem', 
+                width: '326px', 
                 border: `1px solid ${brdColor}`, 
                 background: bgColor, 
             }}
