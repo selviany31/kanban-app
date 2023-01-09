@@ -4,7 +4,7 @@ import SVG from "react-inlinesvg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getMultiItems } from "../../store/actions/todos";
+import { createDataItems, deleteDataItems, getMultiItems } from "../../store/actions/todos";
 import { Draggable } from "react-beautiful-dnd";
 import DeleteComponent from "./Delete";
 import FormTask from "./FormTask";
@@ -13,9 +13,34 @@ const TaskComponent = ({ id }) => {
     const dispatch = useDispatch()
     const { items, todos } = useSelector((state) => state.todos)
     const filterItem = items?.filter(item => item?.todo_id === id)
-
+    const index = todos.findIndex( el => el.id === id )
+    
     const [showDelete, setShowDelete] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
+    
+    const handleMoveRight = (idItem, name, progress) => {
+        dispatch(createDataItems({
+            id: todos[index + 1]?.id,
+            data: {
+                name,
+                progress_percentage: progress
+            }
+        }))
+
+        dispatch(deleteDataItems({ id, idItem }))
+    }
+
+    const handleMoveLeft = (idItem, name, progress) => {
+        dispatch(createDataItems({
+            id: todos[index - 1]?.id,
+            data: {
+                name,
+                progress_percentage: progress
+            }
+        }))
+
+        dispatch(deleteDataItems({ id, idItem }))
+    }
 
     useEffect(() => {
         dispatch(getMultiItems(todos))
@@ -52,13 +77,21 @@ const TaskComponent = ({ id }) => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu className="menu border-0">
-                                            <Dropdown.Item className="d-flex align-items-center px-0 item-title">
+                                            <Dropdown.Item 
+                                                onClick={() => handleMoveRight(item?.id, item?.name, item?.progress_percentage)} 
+                                                className="d-flex align-items-center px-0 item-title"
+                                                disabled={todos[todos.length -1]?.id === id}
+                                            >
                                                 <div style={{ width: "35px" }}>
                                                     <SVG src="icon/arrow-right.svg"/>
                                                 </div>
                                                 <span>Move Right</span>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-1" className="d-flex align-items-center px-0 item-title">
+                                            <Dropdown.Item 
+                                                onClick={() => handleMoveLeft(item?.id, item?.name, item?.progress_percentage)}
+                                                className="d-flex align-items-center px-0 item-title"
+                                                disabled={todos[0]?.id === id}
+                                            >
                                                 <div style={{ width: "35px" }}>
                                                     <SVG src="icon/arrow-left.svg" />
                                                 </div>
