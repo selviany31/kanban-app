@@ -46,7 +46,6 @@ export const getMultiItems = createAsyncThunk(
                 }
             })))
             .then(axios.spread((...res) => {
-                console.log('res', res);
                 return res
             })) 
             return response?.map(res => res.data).flat(1)

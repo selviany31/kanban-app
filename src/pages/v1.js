@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -11,13 +11,12 @@ import { dragItem, dragItemColumn } from "../store/slices/todos";
 const HomePage = () => {
     const dispatch = useDispatch()
     const { todos, items, successCreate } = useSelector((state) => state.todos)
-    const [columns, setColumns] = useState(todos);
 
     const bgColor = ['#F7FEFF', '#FFFCF5', '#FFFAFA', '#F8FBF9']
     const brdColor = ['#01959F', '#FEEABC', '#F5B1B7', '#B8DBCA']
     const txtColor = ['#01959F', '#FA9810', '#E11428', '#43936C']
 
-    const onDragEnd = (result, columns, setColumns, items) => {
+    const onDragEnd = (result, items) => {
         if (!result.destination) return;
         const { source, destination, draggableId } = result;
     
@@ -56,14 +55,14 @@ const HomePage = () => {
         dispatch(getMultiItems(todos))
         }
     },[dispatch, todos, successCreate])
-    console.log(1%bgColor.length);
+
     return (
         <div className="App">
         <Header />
         <Container className="mt-4" fluid>
             <div className="d-flex">
             <DragDropContext
-                onDragEnd={result => onDragEnd(result, columns, setColumns, items)}
+                onDragEnd={result => onDragEnd(result, items)}
             >
                 {todos?.map((todo, index) => (
                 <div>

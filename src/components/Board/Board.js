@@ -31,7 +31,6 @@ const BoardComponent = ({ id, title, desc, bgColor, brdColor, txtColor }) => {
                     <p className="subtitle fw-bold mb-2">{desc}</p>
                     <Droppable droppableId={id} key={id}>
                         {(provided, snapshot) => {
-                            console.log(provided, snapshot);
                             return (
                             <div
                                 {...provided.droppableProps}

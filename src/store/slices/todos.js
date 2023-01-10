@@ -21,11 +21,9 @@ export const todoSlice = createSlice({
             state.items[objIndex].todo_id = action.payload.todo_id
         },
         dragItemColumn: (state, action) => {
-            console.log(action.payload);
             const copiedItems = state.items.filter(el => el.todo_id === action.payload.destination)
             const [removed] = copiedItems.splice(action.payload.sourceIndex, 1);
             copiedItems.splice(action.payload.destinationIndex, 0, removed);
-            console.log(copiedItems);
         }
     },
     extraReducers: (builder) => {
