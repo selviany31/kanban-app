@@ -31,6 +31,7 @@ const BoardComponent = ({ id, title, desc, bgColor, brdColor, txtColor }) => {
                     <p className="subtitle fw-bold mb-2">{desc}</p>
                     <Droppable droppableId={id} key={id}>
                         {(provided, snapshot) => {
+                            console.log(provided, snapshot);
                             return (
                             <div
                                 {...provided.droppableProps}
@@ -40,7 +41,7 @@ const BoardComponent = ({ id, title, desc, bgColor, brdColor, txtColor }) => {
                             </div>
                             );
                         }}
-                </Droppable>
+                    </Droppable>
                     <Button 
                         className="bg-transparent border-0 d-flex align-items-center p-0 mt-2"
                         onClick={() => setShow(true)}
